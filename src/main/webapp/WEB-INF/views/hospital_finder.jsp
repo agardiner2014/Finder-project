@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Hospital Finder</title>
 </head>
 <body>
 <h1>
