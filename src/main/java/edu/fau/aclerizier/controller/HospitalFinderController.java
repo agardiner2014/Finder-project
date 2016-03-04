@@ -1,7 +1,12 @@
 package edu.fau.aclerizier.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
+
+import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +33,22 @@ public class HospitalFinderController {
 	@Autowired
 	private SearchService _SearchService;
 
+	private Properties metadataProperties;
+
+	@Autowired
+	public void setServletContext(ServletContext servletContext) throws IOException {
+		InputStream inputStream = servletContext.getResourceAsStream("/META-INF/MANIFEST.MF");
+		metadataProperties = new Properties();
+		metadataProperties.load(inputStream);
+	}
+
+	@RequestMapping(value = "/version", method = RequestMethod.GET)
+	@ResponseBody
+	public Properties getCodeVersion() throws IOException {
+		LOGGER.debug("Manifest is [{}]", metadataProperties.toString());
+		return metadataProperties;
+	}
+
 	@RequestMapping(value = { "", "/", "home", "index" }, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 
@@ -47,7 +68,7 @@ public class HospitalFinderController {
 
 		locationCoordinates = _AddressService.getLocationCoordinatesFromAddr(addr);
 		LOGGER.debug("The Coordinates of {} is {}.", addr, locationCoordinates.toString());
-		
+
 		hospitalList = _SearchService.searchHospitals(locationCoordinates);
 
 		return hospitalList;
