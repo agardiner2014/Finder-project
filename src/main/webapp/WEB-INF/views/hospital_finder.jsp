@@ -2,13 +2,12 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Hospital Finder</title>
+	<title>Amos Hospital Finder</title>
 </head>
 <body>
 <h1>
 	Amos Hospital Finder!  
 </h1>
 
-<P>  The time is ${serverTime}. </P>
 </body>
 </html>
