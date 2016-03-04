@@ -1,5 +1,7 @@
 package edu.fau.aclerizier.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,8 @@ import edu.fau.aclerizier.util.ServiceConstants;
 
 @Service
 public class AddressService {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(AddressService.class);
 
 	@Autowired
 	private GoogleAPIService _GoogleAPIService;
@@ -20,13 +24,23 @@ public class AddressService {
 				+ ServiceConstants.GOOGLE_API_KEY + ServiceConstants.ADD_ANOTHER_PARAMETER
 				+ parseAddr(addr);
 
-		System.out.println(url);
-		System.out
-				.println("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBolZArhr97siyBnph_9QKLnlA13PMk1Co&address=70+SW+91ST+AVE+APT+207,+PLANTATION,+FL+33324");
-
 		String apiResult = _GoogleAPIService.getAPIResults(url);
-		System.out.println(apiResult);
 
+		LOGGER.debug("Google API Result: {}", apiResult);
+
+		String[] cutHead = apiResult.split("\"location\"");
+		String[] cutTail = cutHead[1].split("\"location_type\"");
+
+		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&" + cutTail[0]);
+
+		String coordinates = cutTail[0].replaceAll(" ", "");
+		System.out.println("^^^^^^^^^^^^^^^^^" + coordinates);
+
+		locationCoordinates.setLat(coordinates.split("\"lat\":")[1].split(",\"lng\"")[0]);
+
+		locationCoordinates.setLng(coordinates.split(",\"lng\":")[1].split("}")[0]);
+
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + locationCoordinates.toString());
 		return locationCoordinates;
 	}
 
