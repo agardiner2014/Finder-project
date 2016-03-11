@@ -1,11 +1,12 @@
 package edu.fau.aclerizier.service;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.fau.aclerizier.model.LocationCoordinates;
+import edu.fau.aclerizier.model.GeoLocation;
 import edu.fau.aclerizier.util.ServiceConstants;
 
 @Service
@@ -16,32 +17,27 @@ public class AddressService {
 	@Autowired
 	private GoogleAPIService _GoogleAPIService;
 
-	public LocationCoordinates getLocationCoordinatesFromAddr(String addr) {
-		LocationCoordinates locationCoordinates = null;
-		locationCoordinates = new LocationCoordinates();
+	public GeoLocation getGeoLocationByAddr(String addr) {
+		GeoLocation geoLocation = new GeoLocation();
 
 		String url = ServiceConstants.GOOGLE_MAP_WEB_SERVICE + ServiceConstants.ADD_PARAMETER
 				+ ServiceConstants.GOOGLE_API_KEY + ServiceConstants.ADD_ANOTHER_PARAMETER
 				+ parseAddr(addr);
 
-		String apiResult = _GoogleAPIService.getAPIResults(url);
+		JSONObject apiResult = new JSONObject(_GoogleAPIService.getAPIResults(url));
+		JSONObject results = apiResult.getJSONArray("results").getJSONObject(0);
+		JSONObject geometry = results.getJSONObject("geometry");
+		JSONObject location = geometry.getJSONObject("location");
+		String lng = Double.toString(location.getDouble("lng"));
+		String lat = Double.toString(location.getDouble("lat"));
 
-		LOGGER.debug("Google API Result: {}", apiResult);
+		geoLocation.setLat(lat);
+		geoLocation.setLng(lng);
 
-		String[] cutHead = apiResult.split("\"location\"");
-		String[] cutTail = cutHead[1].split("\"location_type\"");
+		LOGGER.debug("The geo location for [" + addr + "] is { Latitude = " + lat + ", Longitude = "
+				+ lng + "}.");
 
-		System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&" + cutTail[0]);
-
-		String coordinates = cutTail[0].replaceAll(" ", "");
-		System.out.println("^^^^^^^^^^^^^^^^^" + coordinates);
-
-		locationCoordinates.setLat(coordinates.split("\"lat\":")[1].split(",\"lng\"")[0]);
-
-		locationCoordinates.setLng(coordinates.split(",\"lng\":")[1].split("}")[0]);
-
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + locationCoordinates.toString());
-		return locationCoordinates;
+		return geoLocation;
 	}
 
 	private String parseAddr(String addr) {

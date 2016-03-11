@@ -2,7 +2,7 @@ package edu.fau.aclerizier.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class LocationCoordinates {
+public class GeoLocation {
 
 	private String lat;
 	private String lng;
