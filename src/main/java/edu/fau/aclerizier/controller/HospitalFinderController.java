@@ -2,7 +2,6 @@ package edu.fau.aclerizier.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -18,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import edu.fau.aclerizier.model.Hospital;
-import edu.fau.aclerizier.model.LocationCoordinates;
+import edu.fau.aclerizier.model.GeoLocation;
 import edu.fau.aclerizier.service.AddressService;
 import edu.fau.aclerizier.service.SearchService;
 
@@ -57,20 +55,20 @@ public class HospitalFinderController {
 		return "hospital_finder";
 	}
 
-	@RequestMapping(value = "/hospital_by_addr", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Hospital> getHospitalsByAddress(@RequestParam(value = "addr") String addr) {
+	@RequestMapping(value = "/search_places", method = RequestMethod.GET)
+	public String searchPlaces(@RequestParam(value = "addr") String addr,
+			@RequestParam(value = "radius") String radius,
+			@RequestParam(value = "place_type") String place_type) {
 
-		LOGGER.info("Getting hospitals around {}.", addr);
+		LOGGER.info("Getting [" + place_type + "] around [" + addr + "] within [" + radius + "] miles.");
 
-		List<Hospital> hospitalList = null;
-		LocationCoordinates locationCoordinates = null;
+		GeoLocation geoLocation = null;
 
-		locationCoordinates = _AddressService.getLocationCoordinatesFromAddr(addr);
-		LOGGER.debug("The Coordinates of {} is {}.", addr, locationCoordinates.toString());
+		geoLocation = _AddressService.getGeoLocationByAddr(addr);
 
-		hospitalList = _SearchService.searchHospitals(locationCoordinates);
+		// search by geoLocation
 
-		return hospitalList;
+		return "result";
 	}
+
 }
