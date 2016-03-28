@@ -93,6 +93,10 @@ function createmap(){
 	<body onload="createmap()">
 		<p>This is where we show the Google Map API.</p>
 		<p>We should add another button to go back home page here.</p>
+		<hr/>
+		<p>This is the search results from Google API:</p>
+		<p>${searchResults}</p>
+		<hr/>
 
 		<div id="map" style="height:600px; width:600px"></div>
 	</body>

@@ -56,9 +56,8 @@ public class HospitalFinderController {
 	}
 
 	@RequestMapping(value = "/search_places", method = RequestMethod.GET)
-	public String searchPlaces(@RequestParam(value = "addr") String addr,
-			@RequestParam(value = "radius") String radius,
-			@RequestParam(value = "place_type") String place_type) {
+	public String searchPlaces(Model model, @RequestParam(value = "place_type") String place_type,
+			@RequestParam(value = "addr") String addr, @RequestParam(value = "radius") String radius) {
 
 		LOGGER.info("Getting [" + place_type + "] around [" + addr + "] within [" + radius + "] miles.");
 
@@ -66,7 +65,11 @@ public class HospitalFinderController {
 
 		geoLocation = _AddressService.getGeoLocationByAddr(addr);
 
-		// search by geoLocation
+		String searchResults = null;
+
+		searchResults = _SearchService.searchHospitals(place_type, geoLocation, radius);
+		
+		model.addAttribute("searchResults", searchResults);
 
 		return "result";
 	}
