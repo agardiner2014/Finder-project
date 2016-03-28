@@ -370,10 +370,12 @@ a:hover {
 			<form action="search_places" method="GET">
 				Address: <input type="text" name="addr"> <br /> <br />
 				Radius: <select id="radius" name="radius">
+					<option value="5">5 Miles</option>
 					<option value="10">10 Miles</option>
+					<option value="15">15 Miles</option>
 					<option value="20">20 Miles</option>
-					<option value="50">50 Miles</option>
-					<option value="100">100 Miles</option>
+					<option value="25">25 Miles</option>
+					<option value="30">30 Miles</option>
 				</select> <br /> <br /> Place Type: <select id="place_type"
 					name="place_type">
 					<option value="hospital">Hospital</option>
