@@ -68,8 +68,11 @@ public class HospitalFinderController {
 		String searchResults = null;
 
 		searchResults = _SearchService.searchHospitals(place_type, geoLocation, radius);
-		
+
 		model.addAttribute("searchResults", searchResults);
+		
+		model.addAttribute("lat", geoLocation.getLat());
+		model.addAttribute("lng", geoLocation.getLng());
 
 		return "result";
 	}
