@@ -19,8 +19,8 @@
 
 	    var mapOptions = {
 	        zoom: 12,
-	        center: new google.maps.LatLng(lat1, lng1),
-	        mapTypeId: google.maps.MapTypeId.TERRAIN
+	        center: new google.maps.LatLng(lat1, lng1)//,
+	       // mapTypeId: google.maps.MapTypeId.TERRAIN
 	    }
 
 	    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -61,6 +61,19 @@
 	
 </script>
 
+<style type="text/css">
+	body {
+	background: #DCDDDF
+		url(http://premedpress.com/wp-content/uploads/2014/11/medical-cross-symbols-against-blue-background1.jpg);
+	color: #000;
+	font: 14px Arial;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+	}
+
+</style>
+
 <title>Amos Hospital Finder</title>
 </head>
 
@@ -69,22 +82,13 @@
 	<p>We should add another button to go back home page here.</p>
 	<INPUT TYPE="button" VALUE="Back" onClick="history.go(-1);">
 	<hr />
-	<p>This is the search results from Google API:</p>
-<%-- 	<p>${searchResults}</p> --%>
-	<hr />
 
-	<hr />
-	<p>This is the geolocation of the address:</p>
-	<p>lat: ${lat}</p>
-	<p>lat: ${lng}</p>
-	<hr />
-
-	
-	<div ng-app="mapsApp" ng-controller="MapCtrl">
-    <div id="map" style="height: 600px; width: 600px"></div>
-    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-    </div>
-</div>
+	<div ng-app="mapsApp" ng-controller="MapCtrl" style="height: auto; width: auto; overflow:scroll;">
+    	<div id="map" style="height: 400px; width: 400px; float: right; padding-right:15px;"></div>
+    	
+    	<li id="class" ng-repeat="marker in markers | orderBy : 'title'">
+        	<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+    	</li>
+	</div>
 </body>
 </html>
