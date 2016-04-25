@@ -3,7 +3,22 @@
 <html>
 <head>
 <title>Amos Hospital Finder</title>
+<script src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+	//alert("Your location is: " + geoplugin_countryName() + ", " + geoplugin_region() + ", " + geoplugin_city());
+	var x = document.getElementById("addr1");
+	x.value = geoplugin_city();
+	var y = document.getElementById("radius1");
+	y.value = '10';
+	var z = document.getElementById("place_type1");
+	z.value = 'hospital';
+});
+
+</script>
 <style type="text/css">
 /* Reset CSS */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
@@ -359,6 +374,8 @@ a:hover {
 	color: #00aeef;
 }
 </style>
+
+
 </head>
 <body>
 
@@ -384,7 +401,23 @@ a:hover {
 					<option value="pharmacy">Pharmacy</option>
 				</select> <br /> <br /> <input type="submit" value="Find For Me" />
 			</form>
-		</section>
+			
+			
+				<div id= "emergency_button">
+					<form action="search_places" method="GET">
+						<input type="hidden" id= "addr1" name="addr">
+						In Case of Emergency Press Buton Below, Hospitals Will Be Listed Based On Your Location.
+						<br /><input type="hidden" id="radius1" name="radius"></input>
+						<input type="hidden" id="place_type1" name="place_type"></input>
+						<input type="submit" value="EMERGENCY!" />
+					</form>
 	</div>
+		</section>
+		
+	</div>
+	
+
+	
+
 </body>
 </html>
