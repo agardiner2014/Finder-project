@@ -66,24 +66,36 @@
 .main{
 width:80%;
 float: right;
-height: 100%;
+height: 87%;
 /* margin: 20px 205px 0; */
 
 }
 .top {
 background: white;
 width:100%;
-height: 92px;
+height: 13%;
+}
+
+
+h1{
+text-align: center;
+font-family: "proxima-nova-soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
+text-transform: uppercase;
+}
+
+a{
+font-family: "proxima-nova-soft", "Proxima Nova Soft", Helvetica, Arial, sans-serif;
 }
 
 .left {
 float:left;
 width: 20%;
-height: 100%;
-background: grey;
-/* margin: 20px 0px 0; */
-
-	        box-shadow: 0px 0px 20px 0px black;
+height: 87%;
+background: #DAD3D2;
+box-shadow: 0px 0px 20px black;
+position: relative;
+font-style: Tahoma;
+overflow-y:auto
 }
 
 </style>
@@ -94,11 +106,17 @@ background: grey;
 <body>
 	
 	<div class="top">
-		<p>This is where we show the Google Map API.</p>
-		<p>We should add another button to go back home page here.</p>
-		<INPUT TYPE="button" VALUE="Search Again!" onClick="history.go(-1);">
-		<hr />
+		<h1>${places_type} RESULTS</h1>
+			<form action="search_places" method="GET" style="float: right;">
+				<input type="text" id= "addr1" name="addr">
+				<input type="hidden" value=10 name="radius">
+				<input type="hidden" value='hospital' name="place_type">
+				<input type="submit" value="Searh Again!" />
+			</form>
+			<INPUT TYPE="button" VALUE="Home" onClick="location.href = '/aclerizier';">	
 	</div>
+	<hr />
+	
 	<div ng-app="mapsApp" ng-controller="MapCtrl" >
 		
 		

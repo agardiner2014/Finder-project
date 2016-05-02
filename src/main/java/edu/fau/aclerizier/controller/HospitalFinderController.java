@@ -73,6 +73,7 @@ public class HospitalFinderController {
 		
 		model.addAttribute("lat", geoLocation.getLat());
 		model.addAttribute("lng", geoLocation.getLng());
+		model.addAttribute("places_type", place_type);
 
 		return "result";
 	}
