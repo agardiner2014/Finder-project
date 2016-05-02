@@ -36,8 +36,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 }
 
 body {
-	background: #DCDDDF
-		url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
+/* 	background: #DCDDDF */
+/* 		url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png); */
+		
+		background: #E32C2C
+		url(http://worldartsme.com/images/caduceus-black-and-white-clipart-1.jpg);
+		background-size: 50% 50%;
 	color: #000;
 	font: 14px Arial;
 	margin: 0 auto;
@@ -134,13 +138,13 @@ a:hover {
 	background: linear-gradient(top, rgba(248, 248, 248, 1) 0%,
 		rgba(249, 249, 249, 1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8',
-		endColorstr='#f9f9f9', GradientType=0);
-	-webkit-box-shadow: 0 1px 0 #fff inset;
-	-moz-box-shadow: 0 1px 0 #fff inset;
-	-ms-box-shadow: 0 1px 0 #fff inset;
-	-o-box-shadow: 0 1px 0 #fff inset;
-	box-shadow: 0 1px 0 #fff inset;
-	border: 1px solid #c4c6ca;
+		endColorstr='#CFCFCF', GradientType=0);
+	-webkit-box-shadow: 3px 3px 5px 6px #2B2B2B;
+	-moz-box-shadow:    3px 3px 5px 6px #2B2B2B;
+	-ms-box-shadow: 3px 3px 5px 6px #2B2B2B;
+	-o-box-shadow: 3px 3px 5px 6px #2B2B2B;
+	box-shadow:         3px 3px 5px 6px #2B2B2B;
+	border: 1px solid #A5A6A7;
 	margin: 0 auto;
 	padding: 25px 0 0;
 	position: relative;
@@ -165,85 +169,13 @@ a:hover {
 	width: 27%;
 }
 
-#content h1:after {
-	background: rgb(126, 126, 126);
-	background: -moz-linear-gradient(left, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -webkit-linear-gradient(left, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -o-linear-gradient(left, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -ms-linear-gradient(left, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: linear-gradient(left, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	right: 0;
-}
-
-#content h1:before {
-	background: rgb(126, 126, 126);
-	background: -moz-linear-gradient(right, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -webkit-linear-gradient(right, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -o-linear-gradient(right, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: -ms-linear-gradient(right, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	background: linear-gradient(right, rgba(126, 126, 126, 1) 0%,
-		rgba(255, 255, 255, 1) 100%);
-	left: 0;
-}
-
-#content:after, #content:before {
-	background: #f9f9f9;
-	background: -moz-linear-gradient(top, rgba(248, 248, 248, 1) 0%,
-		rgba(249, 249, 249, 1) 100%);
-	background: -webkit-linear-gradient(top, rgba(248, 248, 248, 1) 0%,
-		rgba(249, 249, 249, 1) 100%);
-	background: -o-linear-gradient(top, rgba(248, 248, 248, 1) 0%,
-		rgba(249, 249, 249, 1) 100%);
-	background: -ms-linear-gradient(top, rgba(248, 248, 248, 1) 0%,
-		rgba(249, 249, 249, 1) 100%);
-	background: linear-gradient(top, rgba(248, 248, 248, 1) 0%,
-		rgba(249, 249, 249, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8',
-		endColorstr='#f9f9f9', GradientType=0);
-	border: 1px solid #c4c6ca;
-	content: "";
-	display: block;
-	height: 100%;
-	left: -1px;
-	position: absolute;
-	width: 100%;
-}
-
-#content:after {
-	-webkit-transform: rotate(2deg);
-	-moz-transform: rotate(2deg);
-	-ms-transform: rotate(2deg);
-	-o-transform: rotate(2deg);
-	transform: rotate(2deg);
-	top: 0;
-	z-index: -1;
-}
-
-#content:before {
-	-webkit-transform: rotate(-3deg);
-	-moz-transform: rotate(-3deg);
-	-ms-transform: rotate(-3deg);
-	-o-transform: rotate(-3deg);
-	transform: rotate(-3deg);
-	top: 0;
-	z-index: -2;
-}
 
 #content form {
 	margin: 0 20px;
 	position: relative
 }
 
-#content form input[type="text"], #content form input[type="password"] {
+#content form input[type="text"]{
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
@@ -326,52 +258,6 @@ a:hover {
 	font-size: 12px;
 	margin: 30px 15px 0 0;
 	text-decoration: underline;
-}
-
-.button {
-	background: rgb(247, 249, 250);
-	background: -moz-linear-gradient(top, rgba(247, 249, 250, 1) 0%,
-		rgba(240, 240, 240, 1) 100%);
-	background: -webkit-linear-gradient(top, rgba(247, 249, 250, 1) 0%,
-		rgba(240, 240, 240, 1) 100%);
-	background: -o-linear-gradient(top, rgba(247, 249, 250, 1) 0%,
-		rgba(240, 240, 240, 1) 100%);
-	background: -ms-linear-gradient(top, rgba(247, 249, 250, 1) 0%,
-		rgba(240, 240, 240, 1) 100%);
-	background: linear-gradient(top, rgba(247, 249, 250, 1) 0%,
-		rgba(240, 240, 240, 1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa',
-		endColorstr='#f0f0f0', GradientType=0);
-	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-	-ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-	-o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
-	-webkit-border-radius: 0 0 5px 5px;
-	-moz-border-radius: 0 0 5px 5px;
-	-o-border-radius: 0 0 5px 5px;
-	-ms-border-radius: 0 0 5px 5px;
-	border-radius: 0 0 5px 5px;
-	border-top: 1px solid #CFD5D9;
-	padding: 15px 0;
-}
-
-.button a {
-	background: url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) 0
-		-112px no-repeat;
-	color: #7E7E7E;
-	font-size: 17px;
-	padding: 2px 0 2px 40px;
-	text-decoration: none;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-ms-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-}
-
-.button a:hover {
-	background-position: 0 -135px;
-	color: #00aeef;
 }
 </style>
 

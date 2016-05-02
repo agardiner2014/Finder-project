@@ -62,15 +62,29 @@
 </script>
 
 <style type="text/css">
-	body {
-	background: #DCDDDF
-		url(http://premedpress.com/wp-content/uploads/2014/11/medical-cross-symbols-against-blue-background1.jpg);
-	color: #000;
-	font: 14px Arial;
-	margin: 0 auto;
-	padding: 0;
-	position: relative;
-	}
+
+.main{
+width:80%;
+float: right;
+height: 100%;
+/* margin: 20px 205px 0; */
+
+}
+.top {
+background: white;
+width:100%;
+height: 92px;
+}
+
+.left {
+float:left;
+width: 20%;
+height: 100%;
+background: grey;
+/* margin: 20px 0px 0; */
+
+	        box-shadow: 0px 0px 20px 0px black;
+}
 
 </style>
 
@@ -78,17 +92,23 @@
 </head>
 
 <body>
-	<p>This is where we show the Google Map API.</p>
-	<p>We should add another button to go back home page here.</p>
-	<INPUT TYPE="button" VALUE="Back" onClick="history.go(-1);">
-	<hr />
-
-	<div ng-app="mapsApp" ng-controller="MapCtrl" style="height: auto; width: auto; overflow:scroll;">
-    	<div id="map" style="height: 400px; width: 400px; float: right; padding-right:15px;"></div>
-    	
+	
+	<div class="top">
+		<p>This is where we show the Google Map API.</p>
+		<p>We should add another button to go back home page here.</p>
+		<INPUT TYPE="button" VALUE="Search Again!" onClick="history.go(-1);">
+		<hr />
+	</div>
+	<div ng-app="mapsApp" ng-controller="MapCtrl" >
+		
+		
+    	<div class="main" id="map"></div>
+    	<div class="left">
+    	<br>
     	<li id="class" ng-repeat="marker in markers | orderBy : 'title'">
         	<a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
     	</li>
+    	</div>
 	</div>
 </body>
 </html>
